@@ -1,68 +1,16 @@
-Symfony Standard Edition
+Records Library 1.0
 ========================
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
-
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+This is an impementation of a records library system that relies on Symfony 3.0.
+It allows inserting records data by simply handling the UPC code and submitting to Amazon:
+if that item is present in the Amazon catalog the data will be fecthed and stored.
+When that particular item (that particular UPC) is not available on Amazon, then
+a simple search is possible in order to find a possible equivalent (i.e. an item
+with the same media type, the same number of media, the same tracks and the same cover
+image). As a last resort a manual insertion of data is possible.
 
 What's inside?
 --------------
 
-The Symfony Standard Edition is configured with the following defaults:
-
-  * An AppBundle you can use to start coding;
-
-  * Twig as the only configured template engine;
-
-  * Doctrine ORM/DBAL;
-
-  * Swiftmailer;
-
-  * Annotations enabled for everything.
-
-It comes pre-configured with the following bundles:
-
-  * **FrameworkBundle** - The core Symfony framework bundle
-
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
-
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
-
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
-
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
-
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
-
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
-
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
-
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
-    capabilities
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/3.0/book/installation.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.0/book/doctrine.html
-[8]:  https://symfony.com/doc/3.0/book/templating.html
-[9]:  https://symfony.com/doc/3.0/book/security.html
-[10]: https://symfony.com/doc/3.0/cookbook/email.html
-[11]: https://symfony.com/doc/3.0/cookbook/logging/monolog.html
-[13]: https://symfony.com/doc/3.0/bundles/SensioGeneratorBundle/index.html
+Mainly all files not excluded by the .gitignore available here:
+https://github.com/github/gitignore/blob/master/Symfony.gitignore
