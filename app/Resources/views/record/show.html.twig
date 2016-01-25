@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Records library{% endblock %}
+
+{% block stylesheets %}<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" /><link href="{{ asset('css/main.css') }}" rel="stylesheet" />{% endblock %}
+
+{% block body %}
+<div class="container record-container">
+  <div class="row">
+    <div class="col-sm-6"><img class="img-responsive shadowed" src="{% if record.coverImageUrl %}{{ record.coverImageUrl }}{% else %}/images/imgna.jpg{% endif %}"></div>
+    <div class="col-sm-6 record-details">
+      <div><span class="artist"><b>{{ record.artist }}</b></span></div>
+      <div><span class="title"><b><i>{{ record.title }}</i></b></span></div>
+      <div style="height: 50px;">&nbsp;</div>
+      <div><b>Year:</b> <span class="record-year">{{ record.year }}</span></div>
+      <div><b>Media type:</b> <span class="record-mediatype">{{ record.mediaType }}</span></div>
+      <div><b>Media count:</b> <span class="record-mediacount">{{ record.mediaCount }}</span></div>
+      <div><b>Label:</b> <span class="record-label">{{ record.recordLabel }}</span></div>
+      <div><b>Genre:</b> {{ record.genre }}</div>
+      <div style="height: 50px;">&nbsp;</div>
+      <div><b>Local Id:</b> {{ record.Id }}</div>
+      {% if record.UPC %}<div><b>UPC:</b> {{ record.upc }}</div>{% endif %}
+      {% if record.ASIN %}<div><b>ASIN:</b> {{ record.asin }}</div>{% endif %}
+      {% if record.cddbid %}<div><b>CDDBID:</b> {{ record.cddbid }}</div>{% endif %}
+      {% if record.ts %}<div><b>Data timestamp:</b> {{ record.ts|date('Y-m-d H:i:s') }}</div>{% endif %}
+    </div>
+  </row>
+</div>
+<div class="row">
+  <div class="col-xs-9">
+    {% if record.tracksLists %}
+    <h3>Tracks</h3>
+    {% set listsCount = record.tracksLists|length %}
+    {% for trackList in record.tracksLists %}
+    <div class="tracklist">
+    {% if listsCount > 1 %}
+    <h4>Media {{ loop.index }}</h4>
+    {% endif %}
+    <ol>
+    {% for trackTitle in trackList %}
+    <li class="">{{ trackTitle }}</li>
+    {% endfor %}
+    </ol>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h3>Tracks lists not available</h3>
+    {% endif %}
+  </div>
+  <div class="col-xs-3">
+    <ul class="nobullet">
+      <li>
+        <a href="{{ path('records_list') }}"><button type="button" class="btn btn-default">Back to the list</button></a>
+      </li>
+      <li>
+        <a href="{{ path('records_index') }}"><button type="button" class="btn btn-default">Back to the main menu</button></a>
+      </li>
+      <li>
+        <a href="{{ path('record_edit', { 'id': record.id }) }}"><button type="button" class="btn btn-default">Edit</button></a>
+      </li>
+      <li>
+        {{ form_start(delete_form) }}
+        <input class="btn btn-default" type="button" onClick="forewarn();" value="Delete">
+        {{ form_end(delete_form) }}
+      </li>
+    </ul>
+  </div>
+</div>
+<script>
+function forewarn () {
+  answer = confirm('Are you sure?');
+  if (answer) {
+    form.submit();
+  }
+}
+</script>
+{% endblock %}

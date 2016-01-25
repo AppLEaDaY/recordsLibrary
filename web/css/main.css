@@ -1,0 +1,167 @@
+body {
+  background-image: url('/images/paper.jpg');
+  font-family: courier;
+  color: #000000;
+  /*background: #EEECE9;*/
+}
+a {
+  color: #FFFFFF;
+}
+.record-container {
+  margin-top: 45px;
+}
+.record-details {
+  margin-top: 30px;
+  padding-left: 30px;
+}
+.header-row {
+  font-weight: bold;
+}
+.paper-row {
+  background-image: url('/images/paper-row.jpg');
+  display: flex;
+  align-items: center;
+  padding: 1px 0;
+}
+/*
+.odd-row {
+  background: #E0E0E0;
+}
+.even-row {
+  background: #C0BEBE;
+}
+*/
+.odd-row, .even-row {
+  opacity: 0.5;
+}
+.artist, .title, .action, .record-label, .media-type, .media-count {
+  opacity: 1;
+}
+.title {
+  font-style: oblique;
+}
+.row-text {
+  margin-top: 40px;
+}
+.actions {
+  list-style-type: none;
+}
+.actions li {
+  margin-left: -38px !important;
+}
+.search {
+  margin-top: 25px;
+  background: lightgrey;
+}
+
+.nobullet {
+  list-style-type: none;
+}
+.nobullet li {
+  margin: 35px 0;
+}
+.horlist {
+  text-align: center;
+}
+.horlist li {
+  display: inline;
+  margin: 0 50px;
+}
+
+
+
+
+input {
+  padding-left: 10px;
+}
+input::-webkit-input-placeholder { /* WebKit browsers */
+  padding-left: 10px;
+  font-weight: bold;
+}
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  padding-left: 10px;
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+  padding-left: 10px;
+}
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+  padding-left: 10px;
+}
+
+
+
+
+label {
+  /*width: 200px;*/
+  vertical-align: top;
+}
+/*
+#record_coverImageUrl {
+  width: 421px;
+}
+
+#edit-page input, #edit-page textarea {
+  text-align: center;
+  margin: 5px 0;
+}
+#edit-page label {
+  margin: 5px 0;
+}
+#apply {
+  display: block;
+  width: 100px;
+  margin: 20px auto !important;
+}
+*/
+
+@media screen and (min-width: 768px) {
+#edit-title {
+  margin-top: 35%;
+}
+#image-and-title {
+  margin-bottom: 30px;
+}
+}
+
+/*
+.results-img {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+*/
+
+
+.tracklist {
+  width: 420px;
+  float: left;
+}
+
+.shadowed {
+  box-shadow: 10px 10px 10px grey;
+}
+
+
+
+/*
+.upc-input, .asin-input, .cddbid-input {
+  width: 140px;
+}
+.artist-input {
+  width: 50%;
+}
+.year-input {
+  width: 60px;
+}
+.mediatype-input {
+  width: 160px;
+}
+.mediacount-input {
+  width: 160px;
+}
+.recordlabel-input {
+  width: 200px;
+}
+.genre-input {
+  width: 300px;
+}
+*/

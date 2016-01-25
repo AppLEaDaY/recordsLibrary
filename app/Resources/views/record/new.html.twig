@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Records library{% endblock %}
+
+{% block stylesheets %}<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" /><link href="{{ asset('css/main.css') }}" rel="stylesheet" />{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Storing a new record</h1>
+
+    {% form_theme form 'bootstrap_3_layout.html.twig'  %}
+
+    {{ form_start(form) }}
+    <div class="row">
+      <div class="col-xs-2">{{ form_row(form.upc) }}</div>
+      <div class="col-xs-2">{{ form_row(form.asin) }}</div>
+      <div class="col-xs-2">{{ form_row(form.cddbid) }}</div>
+      <div class="col-xs-2">{{ form_row(form.mediaType) }}</div>
+      <div class="col-xs-2">{{ form_row(form.mediaCount) }}</div>
+      <div class="col-xs-2">{{ form_row(form.recordLabel) }}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-4">{{ form_row(form.artist) }}</div>
+      <div class="col-xs-5">{{ form_row(form.title) }}</div>
+      <div class="col-xs-2">{{ form_row(form.year) }}</div>
+      <div class="col-xs-1">{{ form_row(form.genre) }}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">{{ form_row(form.coverImageUrl) }}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">{{ form_row(form.tracksListsInString) }}</div>
+    </div>
+
+    <ul class="nobullet horlist">
+      <li>
+        <input type="submit" class="btn btn-primary" value="Create" />
+      </li>
+      <li>
+        <a class="btn btn-default" href="{{ path('records_list') }}">Back to the list</a>
+      </li>
+      <li>
+        <a class="btn btn-default" href="{{ path('records_index') }}">Back to the main menu</a>
+      </li>
+    </ul>
+    {{ form_end(form) }}
+
+</div>
+{% endblock %}

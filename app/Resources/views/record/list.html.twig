@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Records library{% endblock %}
+
+{% block stylesheets %}<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" /><link href="{{ asset('css/main.css') }}" rel="stylesheet" />{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <div class="row"><div class="col-sm-8"><h1>Records library</h1></div><form action="/records/list"><div class="col-sm-4"><input name="substring" class="search" type="text" placeholder="Search"></div></form></div>
+
+
+    {% set count = records|length %}
+    {% if count > 0 %}
+    <div class="row header-row">
+      <div class="col-sm-3">Artist</div>
+      <div class="col-sm-4">Title</div>
+      <div class="col-sm-1">Year</div>
+      <div class="col-sm-1">Media type</div>
+      <div class="col-sm-1">Media count</div>
+      <div class="col-sm-1">Label</div>
+      <div class="col-sm-1">Actions</div>
+    </div>
+    {% for record in records %}
+    <div class="row paper-row {% if (loop.index is even) %}even-row{% else %}odd-row{% endif %}">
+      <div class="col-sm-3"><span class="artist">{{record.artist}}</span></div>
+      <div class="col-sm-4"><span class="title">{{record.title}}</span></div>
+      <div class="col-sm-1"><span class="year">{{record.year}}</span></div>
+      <div class="col-sm-1"><span class="media-type">{{record.mediaType}}</span></div>
+      <div class="col-sm-1"><span class="media-count">{{record.mediaCount}}</span></div>
+      <div class="col-sm-1"><span class="record-label">{{record.recordLabel}}</span></div>
+      <div class="col-sm-1">
+        <ul class="actions">
+        <li><a class="action" href="{{ path('record_show', { 'id': record.id }) }}">Show</a></li>
+        <li><a class="action" href="{{ path('record_edit', { 'id': record.id }) }}">Edit</a></li>
+        </ul>
+      </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="row"><div class="col-xs-12 text-center"><b>No result.</b></div></div>
+    {% endif %}
+
+
+{% endblock %}

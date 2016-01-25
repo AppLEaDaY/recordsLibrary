@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Records library{% endblock %}
+
+{% block stylesheets %}<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" /><link href="{{ asset('css/main.css') }}" rel="stylesheet" />{% endblock %}
+
+{% block body %}
+<div class="container">
+<div class="row">
+  <div class="col-xs-12"><h1>Records Library</h1></div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <ul>
+      <li><a href="{{ path('records_list') }}">Search records</a></li>
+      <li><a href="{{ path('insertByUPC') }}">Insert new record by UPC</a></li>
+      <li><a href="{{ path('searchByText') }}">Insert new record by a free search on Amazon catalog</a></li>
+      <li><a href="{{ path('record_new') }}">Insert new record manually</a></li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

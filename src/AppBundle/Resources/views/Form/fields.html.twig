@@ -1,0 +1,9 @@
+{% block field_row %}
+<div class="row form_row">
+  <div class="col-xs-12">
+    <div>{{ form_label(edit_form) }}</div>
+    <div>{{ form_errors(edit_form) }}</div>
+    <div>{{ form_widget(edit_form) }}</div>
+  </div>
+</div>
+{% endblock field_row %}

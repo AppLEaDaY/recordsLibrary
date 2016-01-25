@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+{# form_theme edit_form 'AppBundle:Form:fields.html.twig' #}
+{% block title %}Records library{% endblock %}
+
+{% block stylesheets %}<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" /><link href="{{ asset('css/main.css') }}" rel="stylesheet" />{% endblock %}
+
+{% block body %}
+<div id="edit-page" class="container record-container">
+
+
+{% form_theme edit_form 'bootstrap_3_layout.html.twig'  %}
+{{ form_start(edit_form) }}
+
+<div class="row" id="image-and-title">
+  <div class="col-sm-6"><img class="img-responsive" src="{{ edit_form.coverImageUrl.vars.value }}"></div>
+  <div class="col-sm-6"><h1 id="edit-title">Editing this record...</h1></div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4">
+    {{ form_row(edit_form.upc) }}
+  </div>
+  <div class="col-sm-4">
+    {{ form_row(edit_form.asin) }}
+  </div>
+  <div class="col-sm-4">
+    {{ form_row(edit_form.cddbid) }}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+    {{ form_row(edit_form.artist) }}
+  </div>
+  <div class="col-sm-6">
+    {{ form_row(edit_form.title) }}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2">
+    {{ form_row(edit_form.mediaType) }}
+  </div>
+  <div class="col-xs-2">
+    {{ form_row(edit_form.mediaCount) }}
+  </div>
+  <div class="col-xs-2">
+    {{ form_row(edit_form.recordLabel) }}
+  </div>
+  <div class="col-xs-1">
+    {{ form_row(edit_form.year) }}
+  </div>
+  <div class="col-xs-2">
+    {{ form_row(edit_form.genre) }}
+  </div>
+  <div class="col-xs-3">
+    {{ form_row(edit_form.coverImageUrl) }}
+  </div>
+</div>
+<!--
+<div class="row">
+  <div class="col-xs-12">
+    {# form_row(edit_form.coverImageUrl) #}
+  </div>
+</div>
+-->
+
+{% set acc = '' %}
+{% if tracksLists is not empty %}
+  {% set acc = tracksLists[0]|join('|') %}
+  {% set count = tracksLists|length %}
+  {% if count > 1 %}
+    {% for i in 1..(count - 1) %}
+      {% set acc = acc ~ '||' %}
+      {% set acc = acc ~ tracksLists[i]|join('|') %}
+    {% endfor %}
+  {% endif %}
+{% endif %}
+{# for tracklist in edit_form.tracksLists.vars.data #}
+
+<div class="row"><div class="col-xs-12">Count: {{ count }}</div></div>
+<div class="row">
+  <div class="col-xs-12">
+    {{ form_row(edit_form.tracksListsInString, {'value' : acc}) }}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-6 text-center"><a href="{{ path('record_index') }}" class="btn btn-default btn-lg">Back to the list</a></div>
+  <div class="col-xs-6 text-center">
+    <input id="apply" class="btn btn-primary btn-lg" type="submit" value="Apply" />
+  </div>
+</div>
+{{ form_end(edit_form) }}
+
+<div class="row">
+  <div class="col-xs-12 text-center">
+    {% form_theme delete_form 'bootstrap_3_layout.html.twig'  %}
+    {{ form_start(delete_form) }}
+    <!--<input type="submit" class="btn btn-default" value="Delete">-->
+    <input type="button" class="btn btn-danger btn-lg" value="Delete this record" onClick="confirm('Do you really want to completely delete this record?')">
+    {{ form_end(delete_form) }}
+  </div>
+</div>
+
+
+</div> <!-- container end -->
+
+{% endblock %}

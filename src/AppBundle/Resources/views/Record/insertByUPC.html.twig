@@ -1,0 +1,18 @@
+{# AppBundle/Resources/views/Record/insertByUPC.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Insert new record by UPC{% endblock %}
+
+{% block stylesheets %}<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" /><link href="{{ asset('css/main.css') }}" rel="stylesheet" />{% endblock %}
+
+{% block body %}
+<div class="container">
+  <h1>Insert new record by UPC</h1>
+  <h5>If the UPC value is found in the Amazon catalog, a new record will be inserted with related data.</h5>
+  <div class="row>">
+    <div class="col-xs-12">
+      {{form(form)}}
+    </div>
+  </div>
+</div>
+{% endblock %}
